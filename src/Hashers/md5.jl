@@ -19,10 +19,7 @@ type MD5 <: HashAlgorithm
 
   #' @@description Constructs the MD5 data structure.
   function MD5()
-    result = new()
-    reset!(result)
-
-    return result
+    return reset!(new())
   end
 end
 
@@ -34,10 +31,10 @@ const MD5_BLOCK_SIZE = 64
 
 #' @@description MD5 block processing shift constants.
 const SHIFT = UInt32[
-  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
-  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
-  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
-  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
+  7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22, 7, 12, 17, 22,
+  5,  9, 14, 20, 5,  9, 14, 20,  5,  9, 14, 20, 5,  9, 14, 20,
+  4, 11, 16, 23, 4, 11, 16, 23,  4, 11, 16, 23, 4, 11, 16, 23,
+  6, 10, 15, 21, 6, 10, 15, 21,  6, 10, 15, 21, 6, 10, 15, 21
 ]
 
 #' @@description MD5 block processing bytes constants.
@@ -84,9 +81,9 @@ end
 function update!(self::MD5, data::Vector{Uint8})
   if self.buffer_position > 0
     chunck_length = min(length(data), MD5_BLOCK_SIZE - self.buffer_position)
-    last          = self.buffer_position + chunck_length - 1
+    last          = self.buffer_position + chunck_length
 
-    setindex!(self.buffer, data[1:chunck_length], self.buffer_position:last)
+    setindex!(self.buffer, data[1:chunck_length], (self.buffer_position + 1):last)
     self.buffer_position += chunck_length
 
     if self.buffer_position == MD5_BLOCK_SIZE
@@ -94,8 +91,7 @@ function update!(self::MD5, data::Vector{Uint8})
       self.buffer_position = 0
     end
 
-    println(chunck_length)
-    data = data[chunck_length:end]
+    data = data[(chunck_length + 1):end]
   end
 
   index       = 0
@@ -107,9 +103,8 @@ function update!(self::MD5, data::Vector{Uint8})
   end
 
   if data_length > index
-    setindex!(self.buffer, data[index:end], 1:(data_length - index + 1))
+    setindex!(self.buffer, data[(index + 1):end], 1:(data_length - index))
     self.buffer_position = data_length - index
-    println(self.buffer_position)
   end
 
   self.data_length += data_length
@@ -122,22 +117,27 @@ end
 #'
 #' @@return {Vector{Uint8}} The message digest.
 function digest(self::MD5)
-  algorithm = deepcopy(self)
-  r         = algorithm.data_length % MD5_BLOCK_SIZE
-  extra     = (r < 56) ? 0 : 64
+  algorithm   = deepcopy(self)
+  r           = algorithm.data_length % MD5_BLOCK_SIZE
+  extra       = (r > 56) ? MD5_BLOCK_SIZE : 0
+  last_block  = [ 0x80, zeros(UInt8, extra + MD5_BLOCK_SIZE - r - 1) ]
+  len::UInt64 = algorithm.data_length << 3
 
-  update!(algorithm, [ 0x80, zeros(UInt8, extra + 55 - r) ])
+  last_block[end - 7] = convert(UInt8, len & 0xFF)
 
-  len        = algorithm.data_length << 3
-  final_data = UInt8[ convert(UInt8, len >> (8 * i)) for i in 1:8 ]
+  for i in 1:7
+    last_block[end - 7 + i] = convert(UInt8, (len >> (8 * i)) & 0xFF)
+  end
 
-  update!(algorithm, final_data[1:8])
+  println(last_block)
+
+  update!(algorithm, last_block)
   assert(algorithm.buffer_position == 0)
 
   result = zeros(UInt8, MD5_DIGEST_SIZE)
 
-  for i in 1:length(self.scratch)
-    value = bits(self.scratch[i])
+  for i in 1:length(algorithm.scratch)
+    value = bits(algorithm.scratch[i])
     result[4 * (i - 1) + 1] = parseint(UInt8, value[(end -  7):(end -  0)], 2)
     result[4 * (i - 1) + 2] = parseint(UInt8, value[(end - 15):(end -  8)], 2)
     result[4 * (i - 1) + 3] = parseint(UInt8, value[(end - 23):(end - 16)], 2)
@@ -180,7 +180,7 @@ function process_block(self::MD5, block::Vector{UInt8})
     sa  = SHIFT[j + 1]
     a  += f + buffer[buffer_position + 1] + CONSTANT_TABLE[j + 1]
 
-    a, d, c, b = (d, c, b, (a << sa | a >> (32 - sa) +b))
+    a, d, c, b = (d, c, b, (a << sa | a >> (32 - sa) + b))
   end
 
   self.scratch[1] = a0 + a
