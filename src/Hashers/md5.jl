@@ -79,8 +79,11 @@ end
 #'
 #' @@return The reference to the updated hash algorithm.
 function update!(self::MD5, data::Vector{Uint8})
+  data_length       = length(data)
+  self.data_length += data_length
+
   if self.buffer_position > 0
-    chunck_length = min(length(data), MD5_BLOCK_SIZE - self.buffer_position)
+    chunck_length = min(data_length, MD5_BLOCK_SIZE - self.buffer_position)
     last          = self.buffer_position + chunck_length
 
     setindex!(self.buffer, data[1:chunck_length], (self.buffer_position + 1):last)
@@ -94,8 +97,8 @@ function update!(self::MD5, data::Vector{Uint8})
     data = data[(chunck_length + 1):end]
   end
 
-  index       = 0
   data_length = length(data)
+  index       = 0
 
   while data_length >= (index + MD5_BLOCK_SIZE)
     process_block(self, data[(index + 1):(index + MD5_BLOCK_SIZE)])
@@ -107,7 +110,6 @@ function update!(self::MD5, data::Vector{Uint8})
     self.buffer_position = data_length - index
   end
 
-  self.data_length += data_length
   return self
 end
 
@@ -128,8 +130,6 @@ function digest(self::MD5)
   for i in 1:7
     last_block[end - 7 + i] = convert(UInt8, (len >> (8 * i)) & 0xFF)
   end
-
-  println(last_block)
 
   update!(algorithm, last_block)
   assert(algorithm.buffer_position == 0)

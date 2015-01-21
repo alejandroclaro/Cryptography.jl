@@ -1,5 +1,5 @@
 export HashAlgorithm
-export digest, updater
+export digest, hexdigest, updater
 
 #'
 #' @@name HashAlgorithm
@@ -41,6 +41,35 @@ function digest(self::HashAlgorithm, data::Vector{Uint8})
   update!(algorithm, data)
 
   return digest(algorithm)
+end
+
+#' @@description Gets the digest of the data passed to the update!() method so far.
+#'
+#' @@param {HashAlgorithm} self The hash algorithm.
+#'
+#' @@return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
+function hexdigest(self::HashAlgorithm)
+  return join([hex(x, 2) for x in digest(self)])
+end
+
+#' @@description Computes the message digest of the given data.
+#'
+#' @@param {HashAlgorithm} self The hash algorithm.
+#' @@param {Vector{Uint8}} data The input message.
+#'
+#' @@return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
+function hexdigest(self::HashAlgorithm, data::Vector{Uint8})
+  return join([hex(x, 2) for x in digest(self, data)])
+end
+
+#' @@description Computes the message digest of the given data.
+#'
+#' @@param {HashAlgorithm}  self The hash algorithm.
+#' @@param {AbstractString} text The input message.
+#'
+#' @@return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
+function hexdigest(self::HashAlgorithm, data::AbstractString)
+  return join([hex(x, 2) for x in digest(self, data)])
 end
 
 #' @@description Returns a update function linked to the given hash algorithm data structure.
