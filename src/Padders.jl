@@ -1,11 +1,10 @@
-module Padding
+module Padders
 
 export PaddingAlgorithm
-export Pkcs7
 
 #' @@description Defines the multiblock-ciphers padding algorithm abstract type.
 abstract PaddingAlgorithm
 
-include("Padding/Pkcs7.jl")
+include("Padders/pkcs7.jl")
 
 end

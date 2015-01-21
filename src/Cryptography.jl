@@ -1,10 +1,9 @@
 module Cryptography
 
-#' @@description Defines the Cryptography Message as the union of AbstractString and Vector{Uint8} types.
-typealias Message Union(AbstractString, Vector{Uint8})
+export Hashers, Padders, Ciphers
 
-include("Hash.jl")
-include("Padding.jl")
-include("Cipher.jl")
+include("Hashers.jl")
+include("Padders.jl")
+include("Ciphers.jl")
 
 end
