@@ -27,8 +27,10 @@ update!(hasher, [ 0x00, 0x01, 0x02 ])
 update!(hasher, [ 0x03, 0x04, 0x05 ])
 @test hexdigest(hasher) == "d15ae53931880fd7b724dd7888b4b4ed"
 
-@test digest(MD5(), "a")                 == [ 0x0c, 0xc1, 0x75, 0xb9, 0xc0, 0xf1, 0xb6, 0xa8, 0x31, 0xc3, 0x99, 0xe2, 0x69, 0x77, 0x26, 0x61 ]
-@test hexdigest(MD5(), "abc")            == "900150983cd24fb0d6963f7d28e17f72"
-@test hexdigest(MD5(), "message digest") == "f96b697d7cb7938d525a2f31aaf161d0"
+@test digest(MD5(), "a") == [ 0x0c, 0xc1, 0x75, 0xb9, 0xc0, 0xf1, 0xb6, 0xa8, 0x31, 0xc3, 0x99, 0xe2, 0x69, 0x77, 0x26, 0x61 ]
+
+@test hexdigest(MD5(), "abc")                        == "900150983cd24fb0d6963f7d28e17f72"
+@test hexdigest(MD5(), "message digest")             == "f96b697d7cb7938d525a2f31aaf161d0"
 @test hexdigest(MD5(), "abcdefghijklmnopqrstuvwxyz") == "c3fcd3d76192e4007dfb496cca67e13b"
+
 @test hexdigest(MD5(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") == "d174ab98d277d9f5a5611c2c9f419d9f"

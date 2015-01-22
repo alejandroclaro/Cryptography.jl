@@ -1,3 +1,11 @@
+#
+# @@description Implementation of PKCS#7 padding algorithm.
+#
+# @@author Alejandro Claro (alejandro.claro@gmail.com)
+#
+# Copyright 2015 All rights reserved.
+# Use of this source code is governed by a MIT-style license that can be found in the LICENSE file.
+#
 export Pkcs7
 export pad, unpad
 
@@ -8,11 +16,13 @@ end
 #' @@description Computes the padded block for the given plaintext chunk.
 #'
 #' @@param {Pkcs7}         self       The padding algorithm.
-#' @@param {Vector{Uint8}} chunk      The plaintext chunk to pad. This must be shorter than the block size.
+#' @@param {Vector{UInt8}} chunk      The plaintext chunk to pad. This must be shorter than the block size.
 #' @@param {Integer}       block_size The cipher block size.
 #'
 #' @@return {Vector{UInt8}} The padded block.
-function pad(self::Pkcs7, chunk::Vector{Uint8}, block_size::Integer)
+function pad(self::Pkcs7, chunk::Vector{UInt8}, block_size::Integer)
+  len = block_size - (length(chunk) % block_size)
+  return vcat(chunk, fill(convert(UInt8, len), len))
 end
 
 #' @@description Removes the pad bytes from the given plaintext block.
@@ -21,5 +31,6 @@ end
 #' @@param {Vector{Uint8}} block The padded block.
 #'
 #' @@return {Vector{UInt8}} The block without pad.
-function unpad(self::Pkcs7, block::Vector{Uint8})
+function unpad(self::Pkcs7, block::Vector{UInt8})
+  return block[1:end - block[end]]
 end
