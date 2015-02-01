@@ -1,1 +1,978 @@
-{}
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"UI",
+				"UInt8"
+			],
+			[
+				"ch",
+				"ciphertext"
+			],
+			[
+				"U",
+				"UInt64"
+			],
+			[
+				"Uint",
+				"UInt32"
+			],
+			[
+				"MD5",
+				"MD5_BLOCK_SIZE"
+			],
+			[
+				"print",
+				"println	println"
+			],
+			[
+				"prin",
+				"println	println"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"buf",
+				"buffer_position"
+			],
+			[
+				"da",
+				"data_length"
+			],
+			[
+				"bu",
+				"buffer_position"
+			],
+			[
+				"Vec",
+				"Vector{Uint8"
+			],
+			[
+				"i",
+				"immutable	immutable-def"
+			],
+			[
+				"C",
+				"Cipher"
+			],
+			[
+				"de",
+				"decrypt"
+			],
+			[
+				"Int",
+				"Int64"
+			],
+			[
+				"maxi",
+				"maximum"
+			],
+			[
+				"sea",
+				"seats"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"roll",
+				"roll"
+			],
+			[
+				"al",
+				"algorithm"
+			],
+			[
+				"Roman",
+				"RomanNumerals"
+			],
+			[
+				"sel",
+				"self"
+			],
+			[
+				"n",
+				"new"
+			],
+			[
+				"inr",
+				"intersect"
+			],
+			[
+				"sl",
+				"self"
+			],
+			[
+				"pro",
+				"preprocess_prog"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"S",
+				"Shift"
+			],
+			[
+				"and",
+				"andalso"
+			],
+			[
+				"real",
+				"real_close"
+			],
+			[
+				"rea",
+				"real_close"
+			],
+			[
+				"sc",
+				"score"
+			],
+			[
+				"My",
+				"All_My_Pieces"
+			],
+			[
+				"Get",
+				"GetNextAlias"
+			],
+			[
+				"r",
+				"root"
+			],
+			[
+				"pr",
+				"previous"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"symbol",
+				"symbol"
+			],
+			[
+				"f",
+				"first_larger"
+			],
+			[
+				"ro",
+				"roman_digit"
+			],
+			[
+				"for",
+				"format	function"
+			],
+			[
+				"is_",
+				"is_strike	function"
+			],
+			[
+				"ra",
+				"range	function"
+			],
+			[
+				"sef",
+				"self	param"
+			],
+			[
+				"ope",
+				"operator	module"
+			],
+			[
+				"fr",
+				"frame	statement"
+			],
+			[
+				"fre",
+				"frames	statement"
+			],
+			[
+				"bo",
+				"bowling	module"
+			],
+			[
+				"cou",
+				"count_some_var"
+			],
+			[
+				"fi",
+				"first_answer"
+			],
+			[
+				"Un",
+				"UnitP"
+			],
+			[
+				"fl",
+				"foldl"
+			],
+			[
+				"lst",
+				"longest_string1"
+			],
+			[
+				"is",
+				"isUpper"
+			],
+			[
+				"D",
+				"Discard"
+			],
+			[
+				"d",
+				"Draw"
+			],
+			[
+				"va",
+				"values"
+			],
+			[
+				"date",
+				"date2"
+			],
+			[
+				"lh",
+				"lhs_days"
+			],
+			[
+				"lhs",
+				"lhs_date"
+			],
+			[
+				"M",
+				"Member"
+			],
+			[
+				"Me",
+				"standard-menu"
+			],
+			[
+				"def",
+				"default"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 352.0,
+		"selected_items":
+		[
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"git s",
+				"Git: Status"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"repl rub",
+				"SublimeREPL: Ruby"
+			],
+			[
+				"repl ru",
+				"SublimeREPL: Ruby"
+			],
+			[
+				"repl sml",
+				"SublimeREPL: SML"
+			],
+			[
+				"git sts",
+				"Git: Status"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"repl r",
+				"SublimeREPL: Ruby"
+			],
+			[
+				"repl sm",
+				"SublimeREPL: SML"
+			],
+			[
+				"inde",
+				"Indent XML"
+			],
+			[
+				"origa",
+				"Origami: Create Pane Below"
+			],
+			[
+				"synta xm",
+				"Set Syntax: XML"
+			],
+			[
+				"repl m",
+				"SublimeREPL: SML"
+			],
+			[
+				"repl p",
+				"SublimeREPL: Python"
+			],
+			[
+				"ind",
+				"Indent XML"
+			],
+			[
+				"xml",
+				"Indent XML"
+			],
+			[
+				"REPL r",
+				"SublimeREPL: Ruby"
+			],
+			[
+				"spell",
+				"Google Spell Check"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"replh",
+				"SublimeREPL: Haskell"
+			],
+			[
+				"repl h",
+				"SublimeREPL: Haskell"
+			],
+			[
+				"repl has",
+				"SublimeREPL: Haskell"
+			],
+			[
+				"haskell",
+				"SublimeHaskell: Stylish"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"replc",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"clo",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"repl c",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"cloju",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"git pu",
+				"Git: Push"
+			],
+			[
+				"git pus",
+				"Git: Push"
+			],
+			[
+				"python",
+				"SublimeREPL: Python - RUN current file"
+			],
+			[
+				"sublimepy",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"repls",
+				"SublimeREPL: SML"
+			],
+			[
+				"replsml",
+				"SublimeREPL: SML"
+			],
+			[
+				"REPL SM",
+				"SublimeREPL: SML"
+			],
+			[
+				"REPLS",
+				"SublimeREPL: SML"
+			],
+			[
+				"REPL S",
+				"SublimeREPL: SML"
+			],
+			[
+				"SMP",
+				"SublimeREPL: SML"
+			],
+			[
+				"inste",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Packa",
+				"Package Control: List Packages"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"rmeove",
+				"Package Control: Remove Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 526.0
+	},
+	"console":
+	{
+		"height": 226.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/aclaro64/.julia/v0.4/Cryptography",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Ciphers",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Hashers",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Padders"
+	],
+	"file_history":
+	[
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/multiblock_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/des.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/md5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/cbc.jl",
+		"/home/aclaro64/Dropbox/Alejandro/Enthuware/jqplusv7.lic",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/stream_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/block_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Hashers/md5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cryptography.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Padders/pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/hash_algorithm.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders/pkcs7.jl",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/encrypt.py",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/decrypt.py",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw1/question1.py",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/runtests.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/Cryptography.sublime-project",
+		"/home/aclaro64/.julia/v0.4/Cryptography/REQUIRE",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/MultiBlockCipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/CBC.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/BlockCipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/DES.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/.travis.yml",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/StreamCipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography.jl/LICENSE.md",
+		"/home/aclaro64/.julia/v0.4/Cryptography/README.md",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders/Pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/MD5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/DES.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/CBC.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hash.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padding.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padding/Pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cipher/CBC.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hash/MD5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cipher/DES.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/PaddingAlgorithm/Pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/HashAlgorithm.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/HashAlgorithm/MD5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/PaddingAlgorithm.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/PaddingAlgorithm/Pkcs7Padding.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cipher/Cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/DES.jl",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/README.md",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/encrypted.txt",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/plaintext.txt",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/test_encrypt.py",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/test_decrypt.py",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw1/test_question1.py",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw1/README.md",
+		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw1/target.txt",
+		"/home/aclaro64/SourceCode/github/courses/cs000-cryptography-i/hw1/question1_test.py",
+		"/home/aclaro64/SourceCode/github/katas/python/roman-numerals/roman_numerals.py",
+		"/home/aclaro64/SourceCode/github/katas/python/README.md",
+		"/home/aclaro64/SourceCode/github/katas/python/roman-numerals/test_roman_numerals.py",
+		"/home/aclaro64/SourceCode/github/courses/cs000-cryptography-i/hw1/ciphertexts.txt",
+		"/home/aclaro64/SourceCode/github/courses/cs000-cryptography-i/cs000-cryptography-i.sublime-project",
+		"/home/aclaro64/SourceCode/github/courses/cs000-cryptography-i/hw1/messages.txt",
+		"/home/aclaro64/SourceCode/github/courses/cs000-cryptography-i/hw1/target.txt",
+		"/home/aclaro64/Downloads/jqplusv7_trial.ets",
+		"/home/aclaro64/SourceCode/github/katas/go/roman-numerals/roman_numerals_test.go",
+		"/home/aclaro64/SourceCode/github/katas/julia/RomanNumerals/test/RomanNumerals.jl",
+		"/home/aclaro64/SourceCode/github/katas/go/roman-numerals/roman_numerals.go",
+		"/home/aclaro64/SourceCode/github/katas/go/README.md",
+		"/home/aclaro64/SourceCode/github/katas/javascript/roman-numerals/roman-numerals.js",
+		"/home/aclaro64/SourceCode/github/katas/go/roman-numerals/src/roman_numerals.go",
+		"/home/aclaro64/SourceCode/github/katas/go/roman-numerals/src/roman_numerals_test.go",
+		"/home/aclaro64/SourceCode/github/katas/go/go.sublime-project",
+		"/home/aclaro64/SourceCode/github/katas/lua/roman-numerals/roman_numerals_spec.lua",
+		"/home/aclaro64/SourceCode/github/katas/javascript/roman-numerals/test/roman-numerals.js",
+		"/home/aclaro64/SourceCode/github/katas/javascript/roman-numerals/package.json",
+		"/home/aclaro64/SourceCode/github/katas/javascript/roman-numerals/node_modules/underscore/underscore.js",
+		"/home/aclaro64/SourceCode/github/katas/clojure/roman-numerals/src/roman_numerals.clj",
+		"/home/aclaro64/SourceCode/github/katas/javascript/README.md",
+		"/home/aclaro64/SourceCode/github/katas/javascript/javascript.sublime-project",
+		"/home/aclaro64/Downloads/EffectiveCppSummary.pdf",
+		"/home/aclaro64/SourceCode/SAES_A3_API/saes-devices/src/Networking/UnixNetworkInterface.cpp",
+		"/home/aclaro64/SourceCode/SAES_A3_API/saes-devices/include/Saes/Devices/Networking/NetworkInterface.h",
+		"/home/aclaro64/SourceCode/github/katas/julia/NthPrimeNumber/runtests.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeNumbers/test/PrimeNumbers.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeNumbers/src/PrimeNumbers.jl",
+		"/home/aclaro64/.cache/.fr-EOGQXn/D.py",
+		"/home/aclaro64/.cache/.fr-I7X4gV/d.cpp",
+		"/home/aclaro64/.cache/.fr-cTKlJl/d.py",
+		"/home/aclaro64/SourceCode/github/katas/julia/julia.sublime-project",
+		"/home/aclaro64/SourceCode/github/katas/julia/FizzBuzz/src/FizzBuzz.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/CodeJamAfrica2010/1Online/c.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/CodeJamAfrica2010/1Online/out/c.out",
+		"/home/aclaro64/SourceCode/github/katas/julia/CodeJamAfrica2010/1Online/in/c.in",
+		"/home/aclaro64/.cache/.fr-SfKJA8/QualificationRound.java",
+		"/home/aclaro64/.cache/.fr-pnMwrw/C-online.cpp",
+		"/home/aclaro64/.cache/.fr-UAPsDQ/c1.py",
+		"/home/aclaro64/.cache/.fr-Kxh1fF/c.cpp",
+		"/home/aclaro64/.cache/.fr-OwYHmT/Qualification.cpp",
+		"/home/aclaro64/.cache/.fr-Ao1fy8/C.cpp",
+		"/home/aclaro64/SourceCode/github/katas/julia/CodeJamAfrica2010/1Online/a.jl",
+		"/tmp/2d7b53607c3711e49f74199a544ee13e.rb",
+		"/tmp/90f0ac80743811e4b36e557ac7b2efb0.rb",
+		"/home/aclaro64/SourceCode/SAES_6_Linux/plugins/voting-experience/saes-1800/src/Configuration/MachineParameters.cpp",
+		"/home/aclaro64/SourceCode/SAES_6_Linux/applications/election/share/SAES/device-configuration.xml",
+		"/tmp/ee4297f0779d11e4a515bff856f4e780.rb",
+		"/tmp/exam.rb",
+		"/home/aclaro64/SourceCode/github/courses/cs341-programming-languages/hw4/hw4.rkt",
+		"/home/aclaro64/SourceCode/github/courses/cs341-programming-languages/hw5/hw5.rkt",
+		"/home/aclaro64/SourceCode/github/courses/cs341-programming-languages/hw4/hw4test.rkt",
+		"/home/aclaro64/SourceCode/github/courses/cs341-programming-languages/hw6/hw6provided.rb",
+		"/home/aclaro64/SourceCode/github/katas/julia/FizzBuzz/runtests.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/FizzBuzz/test/FizzBuzz.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/runtests.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/src/Bowling.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/test/Bowling.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/test/PrimeFactors.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/src/PrimeFactors.jl",
+		"/home/aclaro64/SourceCode/github/katas/julia/RomanNumerals/src/RomanNumerals.jl",
+		"/home/aclaro64/SourceCode/SAES_A3_API/saes/include/Saes/Convert.inl",
+		"/home/aclaro64/Desktop/commonLetters.cpp",
+		"/tmp/prime.cpp",
+		"/home/aclaro64/SourceCode/github/katas/python/bowling/bowling.py",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/runtests.jl",
+		"/home/aclaro64/SourceCode/github/katas/python/prime-factors/prime_factors.py",
+		"/home/aclaro64/SourceCode/github/katas/python/prime-factors/test_prime_factors.py",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/.travis.yml",
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/README.md"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 87.0,
+		"where_history":
+		[
+			"/home/aclaro64/SourceCode/esbu_dev_cpp_custom_test/alejandro_claro/election-1800/src/Processing",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"Uint8",
+			"data_length",
+			"buffer_position",
+			"buffer",
+			"data_length",
+			"println",
+			"^",
+			"buffer",
+			"aa",
+			"process_block",
+			"^",
+			"xbuf",
+			"data_length",
+			"a",
+			"26    a",
+			"    ",
+			"26    a",
+			"    ",
+			"block_length",
+			"block",
+			"scratch",
+			"d.",
+			"Message",
+			"cyp",
+			":\"",
+			"00",
+			"000",
+			"00",
+			"000",
+			"00",
+			"\"",
+			"\".decode(\"hex\"),",
+			"    ",
+			"set([",
+			"sub_xor_map_2",
+			"0",
+			"sub_xor_map_1",
+			"input2",
+			"input1",
+			"ALPHABET_MAP",
+			"alphabet_map",
+			"alphabet",
+			"):\n",
+			"\"",
+			"\",",
+			"  \"",
+			"\",",
+			"case",
+			")  ==",
+			") ==",
+			")  ==",
+			")   ==",
+			")    ==",
+			"@test to_roman(",
+			"]",
+			"[",
+			"convert.",
+			"(convert.",
+			", roman_numerals.to_roman",
+			"assert.are.equals(",
+			"end)",
+			"\"\n",
+			"tr",
+			"sort",
+			"preprocess_prog",
+			"eval_prog",
+			"stream",
+			"missingRolls",
+			"score_spare",
+			"score_strike",
+			"toRoman",
+			"scoreFrame",
+			"scoreSpare",
+			"isSpare",
+			"scoreStrike",
+			"isStrike",
+			"roman_numerals",
+			"test_roman_9_return_IX",
+			", ",
+			"),",
+			"),  ",
+			"(",
+			"\n		",
+			"intersectLineSegment",
+			"elif",
+			"intersectPoint",
+			"NoPoint.",
+			"NoPoint ",
+			"intersect",
+			"inbetween",
+			"preprocess_prog",
+			"real_close_point",
+			"preprocess_prog",
+			"real_close",
+			"	",
+			"src",
+			"MAXLINES",
+			"SDL2_BUILDING_LIBRARY",
+			"EMLComelec",
+			"XC",
+			"assert_equals",
+			"remove_filled",
+			"store_",
+			"point_array",
+			"and",
+			"@score",
+			"update_score",
+			"score",
+			"current_block",
+			"Piece",
+			"draw_piece",
+			"Game",
+			"game",
+			"Game",
+			"current_block",
+			"All_Pieces",
+			"rotate_clockwise",
+			"3405",
+			"23",
+			"1990010",
+			"=\"",
+			",.",
+			"344",
+			"134",
+			")\n",
+			"PROJECT_VERSION",
+			"findGuideMarks",
+			"VotingTarget"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"UInt8",
+			"position",
+			"block_size",
+			"partial_block",
+			"$",
+			"chunck_length",
+			"self.",
+			"Vector{Uint8}",
+			"",
+			"{",
+			"ALPHABET_MAP",
+			"ALPHABET",
+			"",
+			",",
+			"    { ",
+			"}",
+			"{",
+			"(convert.",
+			"convert.",
+			".must.be.equal",
+			"(convert.toRoman(",
+			"});",
+			"missing_rolls",
+			"score_spare_bonus",
+			"score_strike_bonus",
+			"to_roman",
+			"score_frame",
+			"score_spare",
+			"isspare",
+			"score_strike",
+			"isstrike",
+			"=>",
+			", ",
+			" => ",
+			" ",
+			"  ",
+			"..",
+			"assert_equal",
+			"digit_symbol",
+			"digit_value",
+			"_score_strike",
+			"_score_spare",
+			"_score_frame",
+			"  ",
+			"    ",
+			"",
+			"Saes::Election::",
+			"} /* namespace Election */",
+			"namespace Election\n{",
+			"ELECTION_",
+			"ELECTION_BALLOTPROCESSING_",
+			"No",
+			"m_updateInterval",
+			"  ",
+			" 64",
+			", ",
+			"  0",
+			", ",
+			" 64",
+			"  0"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-commit":
+	{
+		"height": 27.0
+	},
+	"output.haskell_sublime_load":
+	{
+		"height": 44.0
+	},
+	"project": "Cryptography.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 450.0,
+		"selected_items":
+		[
+		],
+		"width": 342.0
+	},
+	"select_symbol":
+	{
+		"height": 279.0,
+		"selected_items":
+		[
+		],
+		"width": 352.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 177.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
