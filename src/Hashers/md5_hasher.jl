@@ -1,35 +1,35 @@
 #
-# @@description Implements the MD5 hash algorithm as defined in RFC 1321.
+# @description Implements the MD5 hash algorithm as defined in RFC 1321.
 #
-# @@author Alejandro Claro (alejandro.claro@gmail.com)
+# @author Alejandro Claro (alejandro.claro@gmail.com)
 #
 # Copyright 2015 All rights reserved.
 # Use of this source code is governed by a MIT-style license that can be found in the LICENSE file.
 #
-export MD5
+export Md5Hasher
 export MD5_DIGEST_SIZE, MD5_BLOCK_SIZE
 export digest_size, reset!, update!, digest
 
-#' @@description Defines the MD5 algorithm data struture.
-type MD5 <: HashAlgorithm
+# @description Defines the MD5 algorithm data struture.
+type Md5Hasher <: HashFunction
   scratch::Vector{UInt32}
   partial_block::Vector{UInt8}
   block_size::UInt32
   data_length::UInt64
 
-  #' @@description Constructs the MD5 data structure.
-  function MD5()
+  # @description Constructs the MD5 data structure.
+  function Md5Hasher()
     return reset!(new())
   end
 end
 
-#' @@description The MD5 resulting message digest size in bytes.
+# @description The MD5 resulting message digest size in bytes.
 const MD5_DIGEST_SIZE = 16
 
-#' @@description The MD5 operation block size in bytes.
+# @description The MD5 operation block size in bytes.
 const MD5_BLOCK_SIZE = 64
 
-#' @@description MD5 block processing shift constants.
+# @description MD5 block processing shift constants.
 const SHIFT = UInt32[
   7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22, 7, 12, 17, 22,
   5,  9, 14, 20, 5,  9, 14, 20,  5,  9, 14, 20, 5,  9, 14, 20,
@@ -37,7 +37,7 @@ const SHIFT = UInt32[
   6, 10, 15, 21, 6, 10, 15, 21,  6, 10, 15, 21, 6, 10, 15, 21
 ]
 
-#' @@description MD5 block processing bytes constants.
+# @description MD5 block processing bytes constants.
 const CONSTANT_TABLE = UInt32[
   0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
   0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be, 0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
@@ -49,21 +49,21 @@ const CONSTANT_TABLE = UInt32[
   0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1, 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 ]
 
-#' @@description Gets the size of the resulting message digest in bytes.
-#'
-#' @@param {MD5} self The hash algorithm.
-#'
-#' @@return {Integer} The size of the resulting message digest in bytes.
-function digest_size(self::MD5)
+# @description Gets the size of the resulting message digest in bytes.
+#
+# @param {Md5Hasher} self The hash algorithm.
+#
+# @return {Integer} The size of the resulting message digest in bytes.
+function digest_size(self::Md5Hasher)
   return MD5_DIGEST_SIZE
 end
 
-#' @@description Resets the state of the MD5 data structure.
-#'
-#' @@param {MD5} self The hash algorithm.
-#'
-#' @@return The reference to the resetted hash algorithm.
-function reset!(self::MD5)
+# @description Resets the state of the MD5 data structure.
+#
+# @param {Md5Hasher} self The hash algorithm.
+#
+# @return The reference to the resetted hash algorithm.
+function reset!(self::Md5Hasher)
   self.scratch       = UInt32[ 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 ]
   self.partial_block = zeros(UInt8, MD5_BLOCK_SIZE)
   self.block_size    = 0
@@ -72,13 +72,13 @@ function reset!(self::MD5)
   return self
 end
 
-#' @@description Continue hashing of a message by consuming the next chunk of data.
-#'
-#' @@param  {MD5}           self The hash algorithm.
-#' @@param  {Vector{Uint8}} data The next message chunk.
-#'
-#' @@return The reference to the updated hash algorithm.
-function update!(self::MD5, data::Vector{Uint8})
+# @description Continue hashing of a message by consuming the next chunk of data.
+#
+# @param  {Md5Hasher}     self The hash algorithm.
+# @param  {Vector{Uint8}} data The next message chunk.
+#
+# @return The reference to the updated hash algorithm.
+function update!(self::Md5Hasher, data::Vector{Uint8})
   index            = 0
   data_length      = length(data)
   self.data_length = self.data_length + data_length
@@ -102,12 +102,12 @@ function update!(self::MD5, data::Vector{Uint8})
   return self
 end
 
-#' @@description Gets the digest of the data passed to the update!() method so far.
-#'
-#' @@param {MD5} self The hash algorithm.
-#'
-#' @@return {Vector{Uint8}} The message digest.
-function digest(self::MD5)
+# @description Gets the digest of the data passed to the update!() method so far.
+#
+# @param {Md5Hasher} self The hash algorithm.
+#
+# @return {Vector{Uint8}} The message digest.
+function digest(self::Md5Hasher)
   algorithm   = deepcopy(self)
   r           = algorithm.data_length % MD5_BLOCK_SIZE
   extra       = (r > 56) ? MD5_BLOCK_SIZE : 0
@@ -136,11 +136,11 @@ function digest(self::MD5)
   return result
 end
 
-#' @@description Process a block.
-#'
-#' @@param {MD5}           self  The hash algorithm.
-#' @@param {Vector{UInt8}} block The block data buffer.
-function process_block(self::MD5, block::Vector{UInt8})
+# @description Process a block.
+#
+# @param {Md5Hasher}     self  The hash algorithm.
+# @param {Vector{UInt8}} block The block data buffer.
+function process_block(self::Md5Hasher, block::Vector{UInt8})
   a0::UInt32 = a::UInt32 = self.scratch[1]
   b0::UInt32 = b::UInt32 = self.scratch[2]
   c0::UInt32 = c::UInt32 = self.scratch[3]
@@ -178,11 +178,11 @@ function process_block(self::MD5, block::Vector{UInt8})
   self.scratch[4] = d0 + d
 end
 
-#' @@description Packs the bytes into a integer value.
-#'
-#' @@param {UInt8}         a, b, c, d  The bytes.
-#'
-#' @@return {UInt32} The integer.
+# @description Packs the bytes into a integer value.
+#
+# @param {UInt8} a, b, c, d The bytes.
+#
+# @return {UInt32} The integer.
 function bytes_to_int(a, b, c, d)
   return convert(UInt32, a) | convert(UInt32, b) << 8 | convert(UInt32, c) << 16 | convert(UInt32, d) << 24
 end

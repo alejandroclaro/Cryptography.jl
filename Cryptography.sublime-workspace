@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"Ui",
+				"UInt8"
+			],
+			[
+				"en_",
+				"encrypt_last_block"
+			],
+			[
+				"nu",
+				"null_block_cipher"
+			],
+			[
+				"key",
+				"key_size"
+			],
+			[
+				"bloc",
+				"block_size"
+			],
+			[
+				"Ar",
+				"ArgumentError"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"blo",
+				"block_size"
+			],
+			[
+				"ke",
+				"key_size"
+			],
+			[
+				"Pa",
+				"PaddingError"
+			],
+			[
 				"UI",
 				"UInt8"
 			],
@@ -532,27 +572,39 @@
 	],
 	"file_history":
 	[
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/multiblock_cipher.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/des.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/md5.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/cbc.jl",
-		"/home/aclaro64/Dropbox/Alejandro/Enthuware/jqplusv7.lic",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/stream_cipher.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/block_cipher.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/test/Hashers/md5.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cryptography.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/test/Padders/pkcs7.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/hash_algorithm.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Cryptography.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Padders/pkcs7_padder.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Hashers/md5_hasher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/runtests.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Ciphers/null_block_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/multiblock_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders/pkcs7_padder.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/md5_hasher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/hash_algorithm.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/stream_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/des_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/block_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/cbc_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/null_block_cipher.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/cbc.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Hashers/md5.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders/pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/test/Padders/pkcs7.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/md5.jl",
+		"/home/aclaro64/.julia/v0.4/Cryptography/.gitignore",
+		"/home/aclaro64/.julia/v0.4/Cryptography/.travis.yml",
+		"/home/aclaro64/.julia/v0.4/Cryptography/Cryptography.sublime-project",
+		"/home/aclaro64/.julia/v0.4/Cryptography/LICENSE.md",
+		"/home/aclaro64/.julia/v0.4/Cryptography/README.md",
+		"/home/aclaro64/.julia/v0.4/Cryptography/REQUIRE",
+		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/des.jl",
+		"/home/aclaro64/Dropbox/Alejandro/Enthuware/jqplusv7.lic",
 		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/encrypt.py",
 		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw2/decrypt.py",
 		"/home/aclaro64/SourceCode/github/courses/cs255-cryptography-i/hw1/question1.py",
-		"/home/aclaro64/.julia/v0.4/Cryptography/test/runtests.jl",
-		"/home/aclaro64/.julia/v0.4/Cryptography/Cryptography.sublime-project",
-		"/home/aclaro64/.julia/v0.4/Cryptography/REQUIRE",
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/MultiBlockCipher.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/CBC.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/BlockCipher.jl",
@@ -561,7 +613,6 @@
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/src/Ciphers/StreamCipher.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography.jl/LICENSE.md",
-		"/home/aclaro64/.julia/v0.4/Cryptography/README.md",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Padders/Pkcs7.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Hashers/MD5.jl",
 		"/home/aclaro64/.julia/v0.4/Cryptography/src/Ciphers/DES.jl",
@@ -648,18 +699,7 @@
 		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/runtests.jl",
 		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/src/Bowling.jl",
 		"/home/aclaro64/SourceCode/github/katas/julia/Bowling/test/Bowling.jl",
-		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/test/PrimeFactors.jl",
-		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/src/PrimeFactors.jl",
-		"/home/aclaro64/SourceCode/github/katas/julia/RomanNumerals/src/RomanNumerals.jl",
-		"/home/aclaro64/SourceCode/SAES_A3_API/saes/include/Saes/Convert.inl",
-		"/home/aclaro64/Desktop/commonLetters.cpp",
-		"/tmp/prime.cpp",
-		"/home/aclaro64/SourceCode/github/katas/python/bowling/bowling.py",
-		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/runtests.jl",
-		"/home/aclaro64/SourceCode/github/katas/python/prime-factors/prime_factors.py",
-		"/home/aclaro64/SourceCode/github/katas/python/prime-factors/test_prime_factors.py",
-		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/.travis.yml",
-		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/README.md"
+		"/home/aclaro64/SourceCode/github/katas/julia/PrimeFactors/test/PrimeFactors.jl"
 	],
 	"find":
 	{
@@ -679,6 +719,28 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Uint8",
+			"last",
+			"index",
+			"::DES",
+			"{DES}",
+			"{CBC}",
+			"::CBC",
+			"MD5",
+			"DES",
+			"{Pkcs7}",
+			"Pkcs7,",
+			"process_block",
+			"algorithm",
+			"@@",
+			"#'",
+			"@@",
+			"#'",
+			"@@",
+			"#'",
+			"@@",
+			"#'",
+			"@@",
 			"Uint8",
 			"data_length",
 			"buffer_position",
@@ -784,29 +846,7 @@
 			"store_",
 			"point_array",
 			"and",
-			"@score",
-			"update_score",
-			"score",
-			"current_block",
-			"Piece",
-			"draw_piece",
-			"Game",
-			"game",
-			"Game",
-			"current_block",
-			"All_Pieces",
-			"rotate_clockwise",
-			"3405",
-			"23",
-			"1990010",
-			"=\"",
-			",.",
-			"344",
-			"134",
-			")\n",
-			"PROJECT_VERSION",
-			"findGuideMarks",
-			"VotingTarget"
+			"@score"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -814,6 +854,24 @@
 		"regex": false,
 		"replace_history":
 		[
+			"UInt8",
+			"::DesCipher",
+			"{DesCipher}",
+			"{CbcCipher}",
+			"::CbcCipher",
+			"Md5Hasher",
+			"DesCipher",
+			"{Pkcs7Padder}",
+			"Pkcs7Padder,",
+			"@",
+			"#",
+			"@",
+			"#",
+			"@",
+			"#",
+			"@",
+			"#",
+			"@",
 			"UInt8",
 			"position",
 			"block_size",
@@ -970,7 +1028,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 177.0,
+	"side_bar_width": 219.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
