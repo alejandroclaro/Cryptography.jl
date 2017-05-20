@@ -1,4 +1,4 @@
-Julia Cryptography Package
+Julia Cryptography Package [![Build Status](https://travis-ci.org/alejandroclaro/Cryptography.jl.svg?branch=master)](https://travis-ci.org/alejandroclaro/Cryptography.jl)
 ==========================
 
 The Julia Cryptography Package contains various cryptographic modules for the Julia programming language. This package is intended to provide a reliable and stable base for writing programs that require cryptographic functions.
