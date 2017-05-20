@@ -28,7 +28,7 @@ end
 # @description Removes the pad bytes from the given plaintext block.
 #
 # @param {Pkcs7Padder}   self  The padding algorithm.
-# @param {Vector{Uint8}} block The padded block.
+# @param {Vector{UInt8}} block The padded block.
 #
 # @return {Vector{UInt8}} The block without pad.
 function unpad(self::Pkcs7Padder, block::Vector{UInt8})
@@ -40,5 +40,5 @@ function unpad(self::Pkcs7Padder, block::Vector{UInt8})
     throw(PaddingError())
   end
 
-  return block[1:end - block[end]]
+  return block[1 : (end - block[end])]
 end

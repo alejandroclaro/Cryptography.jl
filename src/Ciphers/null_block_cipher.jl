@@ -49,10 +49,10 @@ end
 # @description Simulates the encryption of the given plaintext block.
 #
 # @param {NullBlockCipher} self      The cipher data struture.
-# @param {Vector{Uint8}}   plaintext The message to encrypt.
+# @param {Vector{UInt8}}   plaintext The message to encrypt.
 #
-# @return {Vector{Uint8}} A copy of the given plaintext block.
-function encrypt(self::NullBlockCipher, plaintext::Vector{Uint8})
+# @return {Vector{UInt8}} A copy of the given plaintext block.
+function encrypt(self::NullBlockCipher, plaintext::Vector{UInt8})
   if length(plaintext) != block_size(self)
     throw(ArgumentError("Invalid input block length."))
   end
@@ -63,10 +63,10 @@ end
 # @description Simulates the decryption of the given ciphertext block.
 #
 # @param {NullBlockCipher} self       The cipher data struture.
-# @param {Vector{Uint8}}   ciphertext The message to decrypt.
+# @param {Vector{UInt8}}   ciphertext The message to decrypt.
 #
-# @return {Vector{Uint8}} A copy of the given ciphertext block.
-function decrypt(self::NullBlockCipher, ciphertext::Vector{Uint8})
+# @return {Vector{UInt8}} A copy of the given ciphertext block.
+function decrypt(self::NullBlockCipher, ciphertext::Vector{UInt8})
   if length(ciphertext) != block_size(self)
     throw(ArgumentError("Invalid input block length."))
   end

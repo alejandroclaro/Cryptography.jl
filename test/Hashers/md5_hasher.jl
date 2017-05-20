@@ -33,3 +33,4 @@ update!(hasher, [ 0x03, 0x04, 0x05 ])
 @test hexdigest(Md5Hasher(), "abcdefghijklmnopqrstuvwxyz") == "c3fcd3d76192e4007dfb496cca67e13b"
 
 @test hexdigest(Md5Hasher(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789") == "d174ab98d277d9f5a5611c2c9f419d9f"
+

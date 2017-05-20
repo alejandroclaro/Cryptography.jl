@@ -106,8 +106,8 @@ function encrypt_next_blocks!(self::CbcModeCipher, data::Vector{UInt8})
   len    = length(data)
   result = UInt8[]
 
-  for i in 1:step:len-1
-    xor        = map((x,y) -> x $ y, self.previous_block, data[i:i+step-1])
+  for i in 1 : step : (len - 1)
+    xor        = map((x,y) -> x $ y, self.previous_block, data[i : (i + step - 1)])
     ciphertext = encrypt(self.block_cipher, xor)
 
     map!(x -> x, self.previous_block, ciphertext)
@@ -152,8 +152,8 @@ function decrypt_next_blocks!(self::CbcModeCipher, data::Vector{UInt8})
   len    = length(data)
   result = UInt8[]
 
-  for i in 1:step:len-1
-    ciphertext = data[i:i+step-1]
+  for i in 1 : step : (len - 1)
+    ciphertext = data[i : (i + step - 1)]
     plaintext  = decrypt(self.block_cipher, ciphertext)
     xor        = map((x,y) -> x $ y, self.previous_block, plaintext)
 

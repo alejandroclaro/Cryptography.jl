@@ -27,7 +27,7 @@ end
 # @param {HashFunction}   self The hash algorithm.
 # @param {AbstractString} text The input message.
 #
-# @return {Vector{Uint8}} The message digest.
+# @return {Vector{UInt8}} The message digest.
 function digest(self::HashFunction, text::AbstractString)
   return digest(self, convert(Array{UInt8}, text))
 end
@@ -35,10 +35,10 @@ end
 # @description Computes the message digest of the given data.
 #
 # @param {HashFunction}  self The hash algorithm.
-# @param {Vector{Uint8}} data The input message.
+# @param {Vector{UInt8}} data The input message.
 #
-# @return {Vector{Uint8}} The message digest.
-function digest(self::HashFunction, data::Vector{Uint8})
+# @return {Vector{UInt8}} The message digest.
+function digest(self::HashFunction, data::Vector{UInt8})
   context = deepcopy(self)
 
   reset!(context)
@@ -51,7 +51,7 @@ end
 #
 # @param {HashFunction} self The hash algorithm.
 #
-# @return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
+# @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
 function hexdigest(self::HashFunction)
   return join([hex(x, 2) for x in digest(self)])
 end
@@ -59,10 +59,10 @@ end
 # @description Computes the message digest of the given data.
 #
 # @param {HashFunction} self The hash algorithm.
-# @param {Vector{Uint8}} data The input message.
+# @param {Vector{UInt8}} data The input message.
 #
-# @return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
-function hexdigest(self::HashFunction, data::Vector{Uint8})
+# @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
+function hexdigest(self::HashFunction, data::Vector{UInt8})
   return join([hex(x, 2) for x in digest(self, data)])
 end
 
@@ -71,7 +71,7 @@ end
 # @param {HashFunction}  self The hash algorithm.
 # @param {AbstractString} text The input message.
 #
-# @return {Vector{Uint8}} The message digest as a string of double length, containing only hexadecimal digits.
+# @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
 function hexdigest(self::HashFunction, data::AbstractString)
   return join([hex(x, 2) for x in digest(self, data)])
 end
@@ -80,7 +80,7 @@ end
 #
 # @param {HashFunction} self The hash algorithm.
 #
-# @return {Function} A function that only takes one {Vector{Uint8}} argument.
+# @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function updater(self::HashFunction)
   return data -> update!(self, data)
 end

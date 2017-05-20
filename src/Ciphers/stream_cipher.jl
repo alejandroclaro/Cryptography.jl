@@ -16,7 +16,7 @@ abstract StreamCipher
 #
 # @param {StreamCipher} self The cipher data struture.
 #
-# @return {Function} A function that only takes one {Vector{Uint8}} argument.
+# @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function encryptor(self::StreamCipher)
   return plaintext -> encrypt(self, plaintext)
 end
@@ -25,7 +25,7 @@ end
 #
 # @param {StreamCipher} self The cipher data struture.
 #
-# @return {Function} A function that only takes one {Vector{Uint8}} argument.
+# @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function decryptor(self::StreamCipher)
   return ciphertext -> decrypt(self, ciphertext)
 end

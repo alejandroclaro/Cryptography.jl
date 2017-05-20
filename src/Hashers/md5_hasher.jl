@@ -75,16 +75,16 @@ end
 # @description Continue hashing of a message by consuming the next chunk of data.
 #
 # @param  {Md5Hasher}     self The hash algorithm.
-# @param  {Vector{Uint8}} data The next message chunk.
+# @param  {Vector{UInt8}} data The next message chunk.
 #
 # @return The reference to the updated hash algorithm.
-function update!(self::Md5Hasher, data::Vector{Uint8})
+function update!(self::Md5Hasher, data::Vector{UInt8})
   index            = 0
   data_length      = length(data)
   self.data_length = self.data_length + data_length
 
   if self.block_size > 0
-    data = vcat(self.partial_block[1:self.block_size], data)
+    data = vcat(self.partial_block[1 : self.block_size], data)
     self.block_size = 0
     data_length     = length(data)
   end
@@ -95,7 +95,7 @@ function update!(self::Md5Hasher, data::Vector{Uint8})
   end
 
   if data_length > index
-    setindex!(self.partial_block, data[(index + 1):end], 1:(data_length - index))
+    setindex!(self.partial_block, data[(index + 1) : end], 1 : (data_length - index))
     self.block_size = data_length - index
   end
 
@@ -106,14 +106,15 @@ end
 #
 # @param {Md5Hasher} self The hash algorithm.
 #
-# @return {Vector{Uint8}} The message digest.
+# @return {Vector{UInt8}} The message digest.
 function digest(self::Md5Hasher)
   algorithm   = deepcopy(self)
   r           = algorithm.data_length % MD5_BLOCK_SIZE
   extra       = (r > 56) ? MD5_BLOCK_SIZE : 0
-  last_block  = [ 0x80, zeros(UInt8, extra + MD5_BLOCK_SIZE - r - 1) ]
+  last_block  = zeros(UInt8, extra + MD5_BLOCK_SIZE - r)
   len::UInt64 = algorithm.data_length << 3
 
+  last_block[1]       = 0x80
   last_block[end - 7] = convert(UInt8, len & 0xFF)
 
   for i in 1:7
@@ -127,10 +128,10 @@ function digest(self::Md5Hasher)
 
   for i in 1:length(algorithm.scratch)
     value = bits(algorithm.scratch[i])
-    result[4 * (i - 1) + 1] = parseint(UInt8, value[(end -  7):(end -  0)], 2)
-    result[4 * (i - 1) + 2] = parseint(UInt8, value[(end - 15):(end -  8)], 2)
-    result[4 * (i - 1) + 3] = parseint(UInt8, value[(end - 23):(end - 16)], 2)
-    result[4 * (i - 1) + 4] = parseint(UInt8, value[(end - 31):(end - 24)], 2)
+    result[4 * (i - 1) + 1] = parse(UInt8, value[(end -  7) : (end -  0)], 2)
+    result[4 * (i - 1) + 2] = parse(UInt8, value[(end - 15) : (end -  8)], 2)
+    result[4 * (i - 1) + 3] = parse(UInt8, value[(end - 23) : (end - 16)], 2)
+    result[4 * (i - 1) + 4] = parse(UInt8, value[(end - 31) : (end - 24)], 2)
   end
 
   return result
@@ -146,7 +147,7 @@ function process_block(self::Md5Hasher, block::Vector{UInt8})
   c0::UInt32 = c::UInt32 = self.scratch[3]
   d0::UInt32 = d::UInt32 = self.scratch[4]
 
-  buffer = [ bytes_to_int(block[i], block[i + 1], block[i + 2], block[i + 3]) for i in 1:4:64 ]
+  buffer = [ bytes_to_int(block[i], block[i + 1], block[i + 2], block[i + 3]) for i in 1 : 4 : 64 ]
 
   for j in 0:63
     f::UInt32 = 0

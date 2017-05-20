@@ -61,7 +61,7 @@ function process(self::MultiBlockCipher, process_blocks::Function, process_last_
   reset!(context)
 
   if split_index > 1
-    result = process_blocks(context, data[1:split_index-1])
+    result = process_blocks(context, data[1 : (split_index - 1)])
   end
 
   return vcat(result, process_last_block(context, data[split_index:end]))

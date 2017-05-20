@@ -18,7 +18,7 @@ abstract BlockCipher
 #
 # @param {BlockCipher} self The cipher data struture.
 #
-# @return {Function} A function that only takes one {Vector{Uint8}} argument.
+# @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function encryptor(self::BlockCipher)
   return plaintext -> encrypt(self, plaintext)
 end
@@ -27,7 +27,7 @@ end
 #
 # @param {BlockCipher} self The cipher data struture.
 #
-# @return {Function} A function that only takes one {Vector{Uint8}} argument.
+# @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function decryptor(self::BlockCipher)
   return ciphertext -> decrypt(self, ciphertext)
 end

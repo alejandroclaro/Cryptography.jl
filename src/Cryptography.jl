@@ -8,8 +8,8 @@
 #
 module Cryptography
 
-include("Hashers.jl")
-include("Padders.jl")
-include("Ciphers.jl")
+include("hashers.jl")
+include("padders.jl")
+include("ciphers.jl")
 
 end
