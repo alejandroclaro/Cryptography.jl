@@ -1,21 +1,33 @@
 Julia Cryptography Package [![Build Status](https://travis-ci.org/alejandroclaro/Cryptography.jl.svg?branch=master)](https://travis-ci.org/alejandroclaro/Cryptography.jl)
 ==========================
 
-The Julia Cryptography Package contains various cryptographic modules for the Julia programming language. This package is intended to provide a reliable and stable base for writing programs that require cryptographic functions.
-
-A central goal has been to provide a simple, consistent interface for similar classes of algorithms that share a abtract type.
+Cryptography.jl is a free Julia package of cryptographic schemes. This is intended to provide a reliable and stable base to study cryptography. It is not designed to compete in speed with other libraries, but on the contrary to facilitate the compression of the algorithms from an academic point of view. A central objective has been to provide a simple and coherent interface for similar classes of algorithms that share an abstract type in an idiomatic form for Julia.
 
 Installation
 ------------
 
-Hash Algorithms Module (Cryptography.Hashers)
----------------------------------------------
+Design and architecture
+-----------------------
 
-Padding Algorithms Module (Cryptography.Padders)
-------------------------------------------------
+Pseudo Random Number Generators (PRNG)
+--------------------------------------
 
-Ciphers Module (Cryptography.Ciphers)
--------------------------------------
+Ciphers
+-------
 
-Public Key Cryptography Module (Cryptography.PublicKey)
--------------------------------------------------------
+Padding Algorithms
+------------------
+
+Hash Functions
+--------------
+
+Message Authentication Codes (MAC)
+----------------------------------
+
+Public Key Cryptography
+-----------------------
+
+Password Based Key Derivation
+-----------------------------
+
+
