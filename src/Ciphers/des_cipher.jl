@@ -12,8 +12,11 @@ export block_size, key_size, encrypt, decrypt
 
 # @description Defines the DES cipher data struture.
 immutable DesCipher <: BlockCipher
-  subkeys::Array{Array{UInt8, 1}, 1}
+  subkeys::Array{Array{UInt8}}
 
+  # @description Initialize the DES cipher.
+  #
+  # @param {Vector{UInt8}} key The symmetric key.
   function DesCipher(key::Vector{UInt8})
     return new(compute_subkeys(key))
   end
@@ -277,11 +280,11 @@ function computeRoundFunction(r::Vector{UInt8}, key::Vector{UInt8})
   index = 0
 
   for j in 1 : length(DES_SBOXES)
-    # Computes the s-box coordinates.
+    # Computes the s-box(j) indices.
     m = (b[j][1] << 1) + b[j][6]
     n = (b[j][2] << 3) + (b[j][3] << 2) + (b[j][4] << 1) + b[j][5]
 
-    # Find the s-box permutation value.
+    # Find the s-box(j) permutation value.
     v = DES_SBOXES[j][m + 1, n + 1]
 
     # Turn value into bits, one nibble at a time.

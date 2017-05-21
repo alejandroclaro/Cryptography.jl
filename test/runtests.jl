@@ -8,6 +8,7 @@ tests =
   "Padders/pkcs7_padder",
   "Ciphers/null_block_cipher",
   "Ciphers/des_cipher",
+  "Ciphers/triple_des_cipher",
   "Ciphers/cbc_mode_cipher"
 ]
 

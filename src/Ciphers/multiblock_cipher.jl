@@ -51,7 +51,12 @@ end
 # @param {Vector{UInt8}}    data               The message to process.
 #
 # @return {Vector{UInt8}} The processed data.
-function process(self::MultiBlockCipher, process_blocks::Function, process_last_block::Function, data::Vector{UInt8})
+function process(
+  self::MultiBlockCipher,
+  process_blocks::Function,
+  process_last_block::Function,
+  data::Vector{UInt8})
+
   context     = deepcopy(self)
   bz          = block_size(context)
   blocks      = floor(UInt64, length(data) / bz)
