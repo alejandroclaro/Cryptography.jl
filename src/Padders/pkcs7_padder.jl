@@ -1,5 +1,5 @@
 #
-# @description Implementation of PKCS#7 padding method.
+# @description Implementation of PKCS#7 padding functions.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #

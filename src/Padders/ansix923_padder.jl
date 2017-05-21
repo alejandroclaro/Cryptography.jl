@@ -1,5 +1,5 @@
 #
-# @description Implementation of ANSIX923 padding method.
+# @description Implementation of ANSIX923 padding functions.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #

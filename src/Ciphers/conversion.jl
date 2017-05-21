@@ -1,5 +1,5 @@
 #
-# @description Imolements of conversion helper functions.
+# @description Implementation of conversion helper functions.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #
@@ -13,17 +13,17 @@
 #
 # @return {Vector{UInt8}} The array of bits.
 function unpack_bits(data::Vector{UInt8})
-	result = zeros(UInt8, length(data) * 8)
-	index  = 1
+  result = zeros(UInt8, length(data) * 8)
+  index  = 1
 
-	for x in data
-		bit = 7
+  for x in data
+  bit = 7
 
-		while bit >= 0
+  while bit >= 0
       mask = (1 << bit)
       result[index] = (x & mask) != 0 ? 1 : 0
-			index += 1
-			bit -= 1
+  index += 1
+  bit -= 1
     end
   end
 
