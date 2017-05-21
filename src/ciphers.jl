@@ -6,10 +6,14 @@
 # Copyright 2015 All rights reserved.
 # Use of this source code is governed by a MIT-style license that can be found in the LICENSE file.
 #
+export BlockSizeError
 
 # @description Defines cipher block size error exception type.
 type BlockSizeError <: Exception
 end
+
+# Helpers
+include("Ciphers/conversion.jl")
 
 # Abstract types.
 include("Ciphers/stream_cipher.jl")

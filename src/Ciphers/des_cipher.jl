@@ -207,59 +207,6 @@ const DES_FINAL_PERMUTATION = UInt8[
   33,     1,   41,     9,    49,   17,    57,   25
 ]
 
-# @description Unpacks a sequence of bytes into a array of bits.
-#
-# @param {Vector{UInt8}} data The sequence of bytes.
-#
-# @return {Vector{UInt8}} The array of bits.
-function unpack_bits(data::Vector{UInt8})
-	result = zeros(UInt8, length(data) * 8)
-	index  = 1
-
-	for x in data
-		bit = 7
-		while bit >= 0
-      mask = (1 << bit)
-      result[index] = (x & mask) != 0 ? 1 : 0
-			index += 1
-			bit -= 1
-    end
-  end
-
-  return result
-end
-
-# @description Packs a sequence of bits into a array of bytes.
-#
-# @param {Vector{UInt8}} data The sequence of bits.
-#
-# @return {Vector{UInt8}} The array of bytes.
-function pack_bits(data::Vector{UInt8})
-  result = UInt8[]
-  byte   = UInt8(0)
-
-  for index in 1 : length(data)
-  	byte += data[index] << (7 - ((index - 1) % 8))
-
-  	if ((index- 1) % 8) == 7
-  		push!(result, byte)
-  		byte = 0
-    end
-  end
-
-  return result
-end
-
-# @description Permutates the given block using the specified table.
-#
-# @param {Vector{UInt8}} block The block to transform.
-# @param {Vector{UInt8}} table The permutation table.
-#
-# @return {Vector{UInt8}} The permutation.
-function permutate(block::Vector{UInt8}, table::Vector{UInt8})
-  return [block[index] for index in table]
-end
-
 # @description Computes the subkey for DES algorithm.
 #
 # @param key The symmetric key.
@@ -306,36 +253,44 @@ function transform_block(self::DesCipher, block::Vector{UInt8}, iteration::Int64
   rn    = block[33 : end]
 
   for i in 1:16
-    prev = copy(rn)
-    rn   = permutate(rn, DES_EXPANSION_FUNCTION)
-    rn   = map($, rn, self.subkeys[iteration])
-    bn   = [ rn[1 : 6], rn[7 : 12], rn[13 : 18], rn[19 : 24], rn[25 : 30], rn[31 : 36], rn[37 : 42], rn[43 : end] ]
-    sn   = zeros(UInt8, 32)
-
-    index = 0
-
-    for j in 1 : length(DES_SBOXES)
-  		# Work out the offsets
-  		m = (bn[j][1] << 1) + bn[j][6]
-  		n = (bn[j][2] << 3) + (bn[j][3] << 2) + (bn[j][4] << 1) + bn[j][5]
-
-  		# Find the permutation value
-  		v = DES_SBOXES[j][m + 1, n + 1]
-
-  		# Turn value into bits, add it to result: Bn
-  		sn[index + 1] = (v & 8) >> 3
-  		sn[index + 2] = (v & 4) >> 2
-  		sn[index + 3] = (v & 2) >> 1
-  		sn[index + 4] = v & 1
-  		index += 4
-    end
-
-    f  = permutate(sn, DES_SBOX_PERMUTATION)
+    r0 = copy(rn)
+    f  = computeRoundFunction(rn, self.subkeys[iteration])
     rn = map($, ln, f)
-    ln = prev
-
+    ln = r0
     iteration += step
   end
 
   return pack_bits(permutate(vcat(rn, ln), DES_FINAL_PERMUTATION))
+end
+
+# @description Computes the DES' f(*) function for the given R and subkey.
+#
+# @param {Vector{UInt8}} r   The R (right) bytes.
+# @param {Vector{UInt8}} key The subkey for the DES iteration.
+#
+# @return {Vector{UInt8}} The round function value.
+function computeRoundFunction(r::Vector{UInt8}, key::Vector{UInt8})
+  r = permutate(r, DES_EXPANSION_FUNCTION)
+  r = map($, r, key)
+  b = [ r[1 : 6], r[7 : 12], r[13 : 18], r[19 : 24], r[25 : 30], r[31 : 36], r[37 : 42], r[43 : end] ]
+  s = zeros(UInt8, 32)
+  index = 0
+
+  for j in 1 : length(DES_SBOXES)
+    # Computes the s-box coordinates.
+    m = (b[j][1] << 1) + b[j][6]
+    n = (b[j][2] << 3) + (b[j][3] << 2) + (b[j][4] << 1) + b[j][5]
+
+    # Find the s-box permutation value.
+    v = DES_SBOXES[j][m + 1, n + 1]
+
+    # Turn value into bits, one nibble at a time.
+    s[index + 1] = (v & 8) >> 3
+    s[index + 2] = (v & 4) >> 2
+    s[index + 3] = (v & 2) >> 1
+    s[index + 4] = (v & 1) >> 0
+    index += 4
+  end
+
+  return permutate(s, DES_SBOX_PERMUTATION)
 end
