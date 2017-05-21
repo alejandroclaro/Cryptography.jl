@@ -7,6 +7,7 @@ tests =
   "Padders/ansix923_padder",
   "Padders/pkcs7_padder",
   "Ciphers/null_block_cipher",
+  "Ciphers/des_cipher",
   "Ciphers/cbc_mode_cipher"
 ]
 
