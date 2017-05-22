@@ -9,7 +9,7 @@ Installation
 Design and architecture
 -----------------------
 
-<img src="doc/images/secret-key-cryptography-midmap.svg" width="1280">
+<img src="doc/images/secret-key-cryptography-midmap.png" width="1280">
 
 Pseudo Random Number Generators (PRNG)
 --------------------------------------
