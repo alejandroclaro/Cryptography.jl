@@ -19,19 +19,19 @@ immutable TripleDesCipher <: BlockCipher
   #
   # @param {Vector{UInt8}} key The symmetric key.
   function TripleDesCipher(key::Vector{UInt8})
-    keys = []
+    des_keys = []
 
     if length(key) == TRIPLE_DES_LEGAL_KEY_SIZES[1]
-      keys = [ key, key, key ]
+      des_keys = [ key, key, key ]
     elseif length(key) == TRIPLE_DES_LEGAL_KEY_SIZES[2]
-      keys = [ key[1 : 4], key[5 : 8], key[1 : 4] ]
+      des_keys = [ key[1 : 8], key[9 : 16], key[1 : 8] ]
     elseif length(key) == TRIPLE_DES_LEGAL_KEY_SIZES[3]
-      keys = [ key[1 : 4], key[5 : 8], key[9 : 12] ]
+      des_keys = [ key[1 : 8], key[9 : 16], key[17 : 24] ]
     else
       throw(ArgumentError("Invalid key length. $(length(key) * 8) bits provided."))
     end
 
-    return new([ DesCipher(keys[1]), DesCipher(keys[2]), DesCipher(keys[3]) ], length(key))
+    return new([ DesCipher(des_keys[1]), DesCipher(des_keys[2]), DesCipher(des_keys[3]) ], length(key))
   end
 end
 
