@@ -12,7 +12,7 @@ export block_size, key_size, encrypt, decrypt
 
 # @description Defines the DES cipher data struture.
 immutable DesCipher <: BlockCipher
-  subkeys::Array{Array{UInt8}}
+  subkeys::Vector{Vector{UInt8}}
 
   # @description Initialize the DES cipher.
   #
@@ -53,7 +53,16 @@ end
 #
 # @return {Vector{UInt8}} The resulting ciphertext block.
 function encrypt(self::DesCipher, plaintext::Vector{UInt8})
-  return transform_block(self, plaintext, 1, 1);
+  if length(plaintext) != block_size(self)
+    throw(ArgumentError("Invalid input plaintext length."))
+  end
+
+  feistel    = FeistelCipher(compute_des_round, self.subkeys, key_size(self), block_size(self))
+  block      = pack_bits(permutate(unpack_bits(plaintext), DES_INITIAL_PERMUTATION))
+  block      = encrypt(feistel, block)
+  ciphertext = pack_bits(permutate(unpack_bits(block), DES_FINAL_PERMUTATION))
+
+  return ciphertext
 end
 
 # @description Decrypts the given ciphertext block with the key set at initialization.
@@ -63,7 +72,16 @@ end
 #
 # @return {Vector{UInt8}} The resulting plaintext block.
 function decrypt(self::DesCipher, ciphertext::Vector{UInt8})
-  return transform_block(self, ciphertext, 16, -1);
+  if length(ciphertext) != block_size(self)
+    throw(ArgumentError("Invalid input ciphertext length."))
+  end
+
+  feistel   = FeistelCipher(compute_des_round, self.subkeys, key_size(self), block_size(self))
+  block     = pack_bits(permutate(unpack_bits(ciphertext), DES_INITIAL_PERMUTATION))
+  block     = decrypt(feistel, block)
+  plaintext = pack_bits(permutate(unpack_bits(block), DES_FINAL_PERMUTATION))
+
+  return plaintext
 end
 
 # PRIVATE IMPLEMENTATION #######################################################
@@ -214,19 +232,19 @@ const DES_FINAL_PERMUTATION = UInt8[
 #
 # @param key The symmetric key.
 #
-# @return {Array{Array{UInt8, 1}, 1}} The set of subkeys (16 subkeys).
+# @return {Vector{Vector{UInt8}}} The set of subkeys (16 subkeys).
 function compute_subkeys(key::Vector{UInt8})
   if length(key) != DES_LEGAL_KEY_SIZES[1]
     throw(ArgumentError("Invalid key length. $(length(key) * 8) bits provided, but 64 bits expected."))
   end
 
-  result = Array{Array{UInt8, 1}, 1}()
+  result = Vector{Vector{UInt8}}()
   key    = permutate(unpack_bits(key), DES_PC1)
   cn     = key[1 : 28]
   dn     = key[29 : end]
 
-  for i in 1:16
-		for j in 1:DES_LEFT_SHIFTS[i]
+  for i in 1 : 16
+    for j in 1:DES_LEFT_SHIFTS[i]
       cn = circshift(cn, -1)
       dn = circshift(dn, -1)
     end
@@ -238,62 +256,43 @@ function compute_subkeys(key::Vector{UInt8})
   return result
 end
 
-# @description Transforms the given block according to DES algorithm.
-#
-# @param {DesCipher}     self      The cipher data struture.
-# @param {Vector{UInt8}} block     The block to transform.
-# @param {Int8}          iteration The initial transform iteration.
-# @param {Int8}          step      The iteration step size.
-#
-# @return {Vector{UInt8}} The transformed block.
-function transform_block(self::DesCipher, block::Vector{UInt8}, iteration::Int64, step::Int64)
-  if length(block) != block_size(self)
-    throw(ArgumentError("Invalid input block length."))
-  end
-
-  block = permutate(unpack_bits(block), DES_INITIAL_PERMUTATION)
-  ln    = block[1 : 32]
-  rn    = block[33 : end]
-
-  for i in 1:16
-    r0 = copy(rn)
-    f  = computeRoundFunction(rn, self.subkeys[iteration])
-    rn = map($, ln, f)
-    ln = r0
-    iteration += step
-  end
-
-  return pack_bits(permutate(vcat(rn, ln), DES_FINAL_PERMUTATION))
-end
-
 # @description Computes the DES' f(*) function for the given R and subkey.
 #
 # @param {Vector{UInt8}} r   The R (right) bytes.
 # @param {Vector{UInt8}} key The subkey for the DES iteration.
 #
 # @return {Vector{UInt8}} The round function value.
-function computeRoundFunction(r::Vector{UInt8}, key::Vector{UInt8})
+function compute_des_round(r::Vector{UInt8}, key::Vector{UInt8})
   r = permutate(r, DES_EXPANSION_FUNCTION)
   r = map($, r, key)
+
   b = [ r[1 : 6], r[7 : 12], r[13 : 18], r[19 : 24], r[25 : 30], r[31 : 36], r[37 : 42], r[43 : end] ]
-  s = zeros(UInt8, 32)
-  index = 0
+
+  result = zeros(UInt8, 32)
+  index  = 0
 
   for j in 1 : length(DES_SBOXES)
-    # Computes the s-box(j) indices.
-    m = (b[j][1] << 1) + b[j][6]
-    n = (b[j][2] << 3) + (b[j][3] << 2) + (b[j][4] << 1) + b[j][5]
+    m, n  = compute_permutation_position(b[j])
+    value = DES_SBOXES[j][m + 1, n + 1]
 
-    # Find the s-box(j) permutation value.
-    v = DES_SBOXES[j][m + 1, n + 1]
-
-    # Turn value into bits, one nibble at a time.
-    s[index + 1] = (v & 8) >> 3
-    s[index + 2] = (v & 4) >> 2
-    s[index + 3] = (v & 2) >> 1
-    s[index + 4] = (v & 1) >> 0
+    result[index + 1] = (value & 8) >> 3
+    result[index + 2] = (value & 4) >> 2
+    result[index + 3] = (value & 2) >> 1
+    result[index + 4] = (value & 1) >> 0
     index += 4
   end
 
-  return permutate(s, DES_SBOX_PERMUTATION)
+  return permutate(result, DES_SBOX_PERMUTATION)
+end
+
+# @description Computes the permutation position in the s-box(n).
+#
+# @param Vector{UInt8} bn The s-box indices.
+#
+# @return {Integer, Intenger} The permutation position.
+function compute_permutation_position(bn::Vector{UInt8})
+  m = (bn[1] << 1) + bn[6]
+  n = (bn[2] << 3) + (bn[3] << 2) + (bn[4] << 1) + bn[5]
+
+  return m, n
 end
