@@ -25,6 +25,7 @@ include("Ciphers/null_block_cipher.jl")
 include("Ciphers/feistel_cipher.jl")
 include("Ciphers/des_cipher.jl")
 include("Ciphers/triple_des_cipher.jl")
+include("Ciphers/blowfish_cipher.jl")
 
 # Multi-block ciphers.
 include("Ciphers/cbc_mode_cipher.jl")

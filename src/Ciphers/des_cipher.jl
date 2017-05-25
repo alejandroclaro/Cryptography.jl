@@ -18,7 +18,7 @@ immutable DesCipher <: BlockCipher
   #
   # @param {Vector{UInt8}} key The symmetric key.
   function DesCipher(key::Vector{UInt8})
-    return new(compute_subkeys(key))
+    return new(compute_des_subkeys(key))
   end
 end
 
@@ -58,9 +58,9 @@ function encrypt(self::DesCipher, plaintext::Vector{UInt8})
   end
 
   feistel    = FeistelCipher(compute_des_round, self.subkeys, key_size(self), block_size(self))
-  block      = pack_bits(permutate(unpack_bits(plaintext), DES_INITIAL_PERMUTATION))
+  block      = permutate_bits(plaintext, DES_INITIAL_PERMUTATION)
   block      = encrypt(feistel, block)
-  ciphertext = pack_bits(permutate(unpack_bits(block), DES_FINAL_PERMUTATION))
+  ciphertext = permutate_bits(block, DES_FINAL_PERMUTATION)
 
   return ciphertext
 end
@@ -77,9 +77,9 @@ function decrypt(self::DesCipher, ciphertext::Vector{UInt8})
   end
 
   feistel   = FeistelCipher(compute_des_round, self.subkeys, key_size(self), block_size(self))
-  block     = pack_bits(permutate(unpack_bits(ciphertext), DES_INITIAL_PERMUTATION))
+  block     = permutate_bits(ciphertext, DES_INITIAL_PERMUTATION)
   block     = decrypt(feistel, block)
-  plaintext = pack_bits(permutate(unpack_bits(block), DES_FINAL_PERMUTATION))
+  plaintext = permutate_bits(block, DES_FINAL_PERMUTATION)
 
   return plaintext
 end
@@ -233,8 +233,8 @@ const DES_FINAL_PERMUTATION = UInt8[
 # @param key The symmetric key.
 #
 # @return {Vector{Vector{UInt8}}} The set of subkeys (16 subkeys).
-function compute_subkeys(key::Vector{UInt8})
-  if length(key) != DES_LEGAL_KEY_SIZES[1]
+function compute_des_subkeys(key::Vector{UInt8})
+  if length(key) ∉ DES_LEGAL_KEY_SIZES
     throw(ArgumentError("Invalid key length. $(length(key) * 8) bits provided, but 64 bits expected."))
   end
 

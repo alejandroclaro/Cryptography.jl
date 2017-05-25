@@ -65,3 +65,15 @@ end
 function permutate(block::Vector{UInt8}, table::Vector{UInt8})
   return [block[index] for index in table]
 end
+
+# @description Permutates the given block of bytes using the specified table of bits.
+#
+# @param {Vector{UInt8}} block The block to transform.
+# @param {Vector{UInt8}} table The bits permutation table.
+#
+# @return {Vector{UInt8}} The permuted block of bytes.
+function permutate_bits(block::Vector{UInt8}, table::Vector{UInt8})
+  bits = unpack_bits(block)
+  bits = [bits[index] for index in table]
+  return pack_bits(bits)
+end
