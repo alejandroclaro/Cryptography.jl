@@ -1,5 +1,5 @@
 #
-# @description Implements the DES (Data Encryption Standard) block cipher algorithms.
+# @description Implements the DES (Data Encryption Standard) block cipher algorithm.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #

@@ -1,5 +1,5 @@
 #
-# @description Implements the Blowfish block cipher algorithms.
+# @description Implements the Blowfish block cipher algorithm.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #

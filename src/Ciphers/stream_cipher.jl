@@ -18,7 +18,7 @@ abstract StreamCipher
 #
 # @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function encryptor(self::StreamCipher)
-  return plaintext -> encrypt(self, plaintext)
+  return plaintext -> encrypt!(self, plaintext)
 end
 
 # @description Returns the decryption function linked to the given stream-cipher.
@@ -27,5 +27,5 @@ end
 #
 # @return {Function} A function that only takes one {Vector{UInt8}} argument.
 function decryptor(self::StreamCipher)
-  return ciphertext -> decrypt(self, ciphertext)
+  return ciphertext -> decrypt!(self, ciphertext)
 end

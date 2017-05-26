@@ -1,5 +1,5 @@
 #
-# @description Implements the Identity (NULL) block cipher algorithms.
+# @description Implements the Identity (NULL) block cipher algorithm.
 #
 # @author Alejandro Claro (alejandro.claro@gmail.com)
 #
