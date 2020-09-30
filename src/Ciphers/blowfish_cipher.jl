@@ -11,7 +11,7 @@ export BLOWFISH_BLOCK_SIZE, BLOWFISH_LEGAL_KEY_SIZES
 export block_size, key_size, encrypt, decrypt
 
 # @description Defines the Blowfish cipher data struture.
-immutable BlowfishCipher <: BlockCipher
+struct BlowfishCipher <: BlockCipher
   parray::Vector{Vector{UInt8}}
   sboxes::Vector{Vector{UInt32}}
   key_size::UInt64
@@ -393,7 +393,7 @@ function compute_blowfish_boxes(key::Vector{UInt8})
 
   for j in 1 : length(parray)
     for k in 1 : length(parray[j])
-      parray[j][k] = parray[j][k] $ key[(index % length(key)) + 1]
+      parray[j][k] = parray[j][k] ⊻ key[(index % length(key)) + 1]
       index += 1
     end
   end
@@ -430,13 +430,13 @@ function transform_blowfish_block(block::Vector{UInt8}, sboxes::Vector{Vector{UI
   rn = block[5 : 8]
 
   for i in 1 : 16
-    ln = map($, ln, parray[i])
-    rn = map($, rn, compute_blowfish_round(ln, sboxes))
+    ln = map(xor, ln, parray[i])
+    rn = map(xor, rn, compute_blowfish_round(ln, sboxes))
     ln, rn = rn, ln
   end
 
-  ln = map($, ln, parray[17])
-  rn = map($, rn, parray[18])
+  ln = map(xor, ln, parray[17])
+  rn = map(xor, rn, parray[18])
 
   return vcat(rn, ln)
 end
@@ -451,7 +451,7 @@ function compute_blowfish_round(x::Vector{UInt8}, sboxes::Vector{Vector{UInt32}}
   @assert length(x) == 4
 
   h = sboxes[1][x[1] + 1] + sboxes[2][x[2] + 1]
-  y = h $ sboxes[3][x[3] + 1]
+  y = h ⊻ sboxes[3][x[3] + 1]
   z = y + sboxes[4][x[4] + 1]
 
   return reverse(reinterpret(UInt8, [ z ]))

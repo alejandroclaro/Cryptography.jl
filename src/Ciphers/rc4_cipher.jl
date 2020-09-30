@@ -12,7 +12,7 @@ export RC4_LEGAL_KEY_SIZES
 export key_size, reset!, encrypt!, decrypt!
 
 # @description Defines the RC4 cipher data struture.
-type Rc4Cipher <: StreamCipher
+mutable struct Rc4Cipher <: StreamCipher
   key::Vector{UInt8}
   s::Vector{UInt8}
   i::UInt16
@@ -118,7 +118,7 @@ function transform_rc4_bytes!(self::Rc4Cipher, data::Vector{UInt8})
   result = UInt8[]
 
   for x in data
-    push!(result, x $ compute_next_rc4_number!(self))
+    push!(result, x ⊻ compute_next_rc4_number!(self))
   end
 
   return result

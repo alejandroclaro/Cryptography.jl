@@ -9,8 +9,7 @@
 export BlockSizeError
 
 # @description Defines cipher block size error exception type.
-type BlockSizeError <: Exception
-end
+struct BlockSizeError <: Exception end
 
 # Helpers
 include("Ciphers/conversion.jl")

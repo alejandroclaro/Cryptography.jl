@@ -11,7 +11,7 @@ export TRIPLE_DES_BLOCK_SIZE, TRIPLE_DES_LEGAL_KEY_SIZES
 export block_size, key_size, encrypt, decrypt
 
 # @description Defines the 3DES cipher data struture.
-immutable TripleDesCipher <: BlockCipher
+struct TripleDesCipher <: BlockCipher
   des::Array{DesCipher}
   key_size::UInt64
 

@@ -15,7 +15,7 @@ export block_size, key_size, encrypt, decrypt
 # keys       The set of keys.The number of keys defines the number of iterations.
 # key_size   The size of the key from input keys where derived.
 # block_size The round function input block size.
-immutable FeistelCipher <: BlockCipher
+struct FeistelCipher <: BlockCipher
   f::Function
   keys::Vector{Vector{UInt8}}
   key_size::UInt64
@@ -86,7 +86,7 @@ function compute_feistel_network(block::Vector{UInt8}, keys::Vector{Vector{UInt8
   for i in 1 : length(keys)
     r0 = copy(rn)
     f  = round_function(rn, keys[i])
-    rn = map($, ln, f)
+    rn = map(xor, ln, f)
     ln = r0
   end
 

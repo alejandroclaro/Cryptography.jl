@@ -12,7 +12,7 @@ export encryptor, decryptor
 # @description Defines the block-cipher abstract type. A block-cipher is a deterministic algorithm operating
 # on fixed-length groups of bits, called blocks, with an unvarying transformation that is specified by a
 # symmetric key.
-abstract BlockCipher
+abstract type BlockCipher end
 
 # @description Returns the encryption function linked to the given block-cipher.
 #

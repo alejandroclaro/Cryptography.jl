@@ -9,11 +9,10 @@
 export PaddingMethod, PaddingError
 
 # @description Defines the padding method abstract type.
-abstract PaddingMethod
+abstract type PaddingMethod end
 
 # @description Defines general padding error exception type.
-type PaddingError <: Exception
-end
+struct PaddingError <: Exception end
 
 include("Padders/ansix923_padder.jl")
 include("Padders/pkcs7_padder.jl")

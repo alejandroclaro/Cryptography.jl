@@ -10,7 +10,7 @@ export NullBlockCipher
 export block_size, key_size, encrypt, decrypt
 
 # @description Defines the null block-cipher data struture.
-type NullBlockCipher <: BlockCipher
+mutable struct NullBlockCipher <: BlockCipher
   block_size::UInt64
   key_size::UInt64
 

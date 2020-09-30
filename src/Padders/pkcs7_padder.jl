@@ -10,8 +10,7 @@ export Pkcs7Padder
 export pad, unpad
 
 # @description Defines PKCS#7 the padding algorithm data struture.
-immutable Pkcs7Padder <: PaddingMethod
-end
+struct Pkcs7Padder <: PaddingMethod end
 
 # @description Computes the padded block for the given plaintext chunk.
 #

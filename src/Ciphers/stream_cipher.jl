@@ -10,7 +10,7 @@ export StreamCipher
 
 # @description Defines the stream-cipher abstract type. A stream-cipher is a symmetric key cipher where plaintext
 # digits are combined with a pseudorandom cipher digit stream.
-abstract StreamCipher
+abstract type StreamCipher end
 
 # @description Returns the encryption function linked to the given stream-cipher.
 #

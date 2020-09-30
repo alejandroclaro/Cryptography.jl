@@ -1,0 +1,9 @@
+name = "Cryptography"
+uuid = "ca5c9360-b3ac-57de-9852-df14d865c29d"
+authors = ["Alejandro Claro  <alejandro.claro@gmail.com>"]
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+julia = "≥ 0.5.0"

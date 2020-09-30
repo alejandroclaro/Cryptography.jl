@@ -10,7 +10,7 @@ export CbcModeCipher
 export block_size, key_size, iv_size, iv, reset!, encrypt_next_blocks!, encrypt_last_block!, decrypt_next_blocks!, decrypt_last_block!
 
 # @description Defines the CBC cipher mode data struture.
-immutable CbcModeCipher <: MultiBlockCipher
+struct CbcModeCipher <: MultiBlockCipher
   block_cipher::BlockCipher
   padder::PaddingMethod
   iv::Vector{UInt8}
@@ -107,7 +107,7 @@ function encrypt_next_blocks!(self::CbcModeCipher, data::Vector{UInt8})
   result = UInt8[]
 
   for i in 1 : step : (len - 1)
-    xor        = map((x,y) -> x $ y, self.previous_block, data[i : (i + step - 1)])
+    xor        = map((x,y) -> x ⊻ y, self.previous_block, data[i : (i + step - 1)])
     ciphertext = encrypt(self.block_cipher, xor)
 
     map!(x -> x, self.previous_block, ciphertext)
@@ -130,7 +130,7 @@ function encrypt_last_block!(self::CbcModeCipher, block::Vector{UInt8})
   result = encrypt_next_blocks!(self, block)
 
   padded_block = pad(self.padder, self.partial_block, block_size(self))
-  xor          = map((x,y) -> x $ y, self.previous_block, padded_block)
+  xor          = map((x,y) -> x ⊻ y, self.previous_block, padded_block)
   ciphertext   = encrypt(self.block_cipher, xor)
 
   append!(result, ciphertext)
@@ -155,7 +155,7 @@ function decrypt_next_blocks!(self::CbcModeCipher, data::Vector{UInt8})
   for i in 1 : step : (len - 1)
     ciphertext = data[i : (i + step - 1)]
     plaintext  = decrypt(self.block_cipher, ciphertext)
-    xor        = map((x,y) -> x $ y, self.previous_block, plaintext)
+    xor        = map((x,y) -> x ⊻ y, self.previous_block, plaintext)
 
     map!(x -> x, self.previous_block, ciphertext)
     append!(result, xor)

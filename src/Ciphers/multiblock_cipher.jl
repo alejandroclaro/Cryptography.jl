@@ -11,7 +11,7 @@ export encrypt, decrypt
 
 # @description Defines the multiblock-cipher abstract type. A multiblock-cipher is an algorithm that uses a block
 # cipher repeatedly to securely transform amounts of data larger than a block.
-abstract MultiBlockCipher
+abstract type MultiBlockCipher end
 
 # @description Encrypts the given plaintext with the key set at initialization.
 #
@@ -64,5 +64,5 @@ function process(self::MultiBlockCipher, process_blocks::Function, process_last_
     result = process_blocks(context, data[1 : (split_index - 1)])
   end
 
-  return vcat(result, process_last_block(context, data[split_index:end]))
+  return vcat(result, process_last_block(context, data[split_index : end]))
 end

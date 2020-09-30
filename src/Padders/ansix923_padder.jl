@@ -10,8 +10,7 @@ export Ansix923Padder
 export pad, unpad
 
 # @description Defines PKCS#7 the padding algorithm data struture.
-immutable Ansix923Padder <: PaddingMethod
-end
+struct Ansix923Padder <: PaddingMethod end
 
 # @description Computes the padded block for the given plaintext chunk.
 #

@@ -10,7 +10,7 @@ export HashFunction
 export digest, hexdigest, updater
 
 # @description Defines the hash algorithms abstract type.
-abstract HashFunction
+abstract type HashFunction end
 
 # @description Continue hashing of a message by consuming the next chunk of data.
 #
@@ -19,7 +19,7 @@ abstract HashFunction
 #
 # @return The reference to the updated hash algorithm.
 function update!(self::HashFunction, text::AbstractString)
-  update!(self, convert(Array{UInt8}, text))
+  update!(self, Array{UInt8}(text))
 end
 
 # @description Computes the message digest of the given data.
@@ -29,7 +29,7 @@ end
 #
 # @return {Vector{UInt8}} The message digest.
 function digest(self::HashFunction, text::AbstractString)
-  return digest(self, convert(Array{UInt8}, text))
+  return digest(self, Array{UInt8}(text))
 end
 
 # @description Computes the message digest of the given data.
@@ -53,7 +53,7 @@ end
 #
 # @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
 function hexdigest(self::HashFunction)
-  return join([hex(x, 2) for x in digest(self)])
+  return join([string(x, 16, 2) for x in digest(self)])
 end
 
 # @description Computes the message digest of the given data.
@@ -63,7 +63,7 @@ end
 #
 # @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
 function hexdigest(self::HashFunction, data::Vector{UInt8})
-  return join([hex(x, 2) for x in digest(self, data)])
+  return join([string(x, 16, 2) for x in digest(self, data)])
 end
 
 # @description Computes the message digest of the given data.
@@ -73,7 +73,7 @@ end
 #
 # @return {Vector{UInt8}} The message digest as a string of double length, containing only hexadecimal digits.
 function hexdigest(self::HashFunction, data::AbstractString)
-  return join([hex(x, 2) for x in digest(self, data)])
+  return join([string(x, 16,  2) for x in digest(self, data)])
 end
 
 # @description Returns a update function linked to the given hash algorithm data structure.

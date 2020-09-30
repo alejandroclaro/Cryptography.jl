@@ -11,7 +11,7 @@ export DES_BLOCK_SIZE, DES_LEGAL_KEY_SIZES
 export block_size, key_size, encrypt, decrypt
 
 # @description Defines the DES cipher data struture.
-immutable DesCipher <: BlockCipher
+struct DesCipher <: BlockCipher
   subkeys::Vector{Vector{UInt8}}
 
   # @description Initialize the DES cipher.
@@ -264,7 +264,7 @@ end
 # @return {Vector{UInt8}} The round function value.
 function compute_des_round(r::Vector{UInt8}, key::Vector{UInt8})
   r = permutate(r, DES_EXPANSION_FUNCTION)
-  r = map($, r, key)
+  r = map(xor, r, key)
 
   b = [ r[1 : 6], r[7 : 12], r[13 : 18], r[19 : 24], r[25 : 30], r[31 : 36], r[37 : 42], r[43 : end] ]
 

@@ -11,16 +11,13 @@ export MD5_DIGEST_SIZE, MD5_BLOCK_SIZE
 export digest_size, reset!, update!, digest
 
 # @description Defines the MD5 algorithm data struture.
-type Md5Hasher <: HashFunction
+mutable struct Md5Hasher <: HashFunction
   scratch::Vector{UInt32}
   partial_block::Vector{UInt8}
   block_size::UInt32
   data_length::UInt64
 
-  # @description Constructs the MD5 data structure.
-  function Md5Hasher()
-    return reset!(new())
-  end
+  Md5Hasher() = reset!(new())
 end
 
 # @description The MD5 resulting message digest size in bytes.
@@ -102,16 +99,16 @@ function digest(self::Md5Hasher)
   end
 
   update!(algorithm, last_block)
-  assert(algorithm.block_size == 0)
+  @assert (algorithm.block_size == 0) "Block should be empty."
 
   result = zeros(UInt8, MD5_DIGEST_SIZE)
 
   for i in 1:length(algorithm.scratch)
-    value = bits(algorithm.scratch[i])
-    result[4 * (i - 1) + 1] = parse(UInt8, value[(end -  7) : (end -  0)], 2)
-    result[4 * (i - 1) + 2] = parse(UInt8, value[(end - 15) : (end -  8)], 2)
-    result[4 * (i - 1) + 3] = parse(UInt8, value[(end - 23) : (end - 16)], 2)
-    result[4 * (i - 1) + 4] = parse(UInt8, value[(end - 31) : (end - 24)], 2)
+    value = bitstring(algorithm.scratch[i])
+    result[4 * (i - 1) + 1] = parse(UInt8, value[(end -  7) : (end -  0)], base = 2)
+    result[4 * (i - 1) + 2] = parse(UInt8, value[(end - 15) : (end -  8)], base = 2)
+    result[4 * (i - 1) + 3] = parse(UInt8, value[(end - 23) : (end - 16)], base = 2)
+    result[4 * (i - 1) + 4] = parse(UInt8, value[(end - 31) : (end - 24)], base = 2)
   end
 
   return result
@@ -162,10 +159,10 @@ function process_block(self::Md5Hasher, block::Vector{UInt8})
       f = (b & d) | (c & ~d)
       position = (position * 5 + 1) & 0x0F
     elseif round == 2
-      f = b $ c $ d
+      f = b ⊻ c ⊻ d
       position = (position * 3 + 5) & 0x0F
     else
-      f = c $ (b | ~d)
+      f = c ⊻ (b | ~d)
       position = (position * 7) & 0x0F
     end
 
